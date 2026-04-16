@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Q400 Reference Index — QantasLink</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@600;700&display=swap');
+:root{--red:#C8102E;--red-lt:#FEF0F2;--red-bd:#F5C0C8;--black:#1C1C1C;--g7:#4A4A4A;--g5:#888;--g2:#E8E8E8;--g1:#F6F6F6;--white:#FFF;--om1:#C8102E;--om1-lt:#FEF0F2;--om1-bd:#F5C0C8;--fcom:#1A5C96;--fcom-lt:#EBF2FB;--fcom-bd:#B8D0ED;--apm:#2E7D32;--apm-lt:#EBF5EB;--apm-bd:#B8DDB9;--font:'Barlow',sans-serif;--font-c:'Barlow Condensed',sans-serif;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:var(--font);background:var(--g1);color:var(--black);font-size:14px;}
+header{background:var(--white);border-bottom:3px solid var(--red);position:sticky;top:0;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,0.08);}
+.hdr-inner{padding:14px 20px 12px;}
+.hdr-top{display:flex;align-items:center;gap:16px;margin-bottom:12px;}
+.ql-mark{display:flex;align-items:center;gap:7px;flex-shrink:0;}
+.ql-mark svg{width:34px;height:34px;}
+.ql-name{font-family:var(--font-c);font-size:23px;font-weight:700;color:var(--red);letter-spacing:-0.3px;}
+.ql-name span{color:var(--black);}
+.hdr-titles{flex:1;}
+.hdr-titles h1{font-family:var(--font-c);font-size:20px;font-weight:700;color:var(--black);}
+.hdr-titles p{font-size:11px;color:var(--g5);font-weight:300;margin-top:1px;}
+.ver-tags{display:flex;gap:6px;flex-shrink:0;}
+.ver{font-size:10px;font-weight:700;padding:3px 8px;border-radius:3px;}
+.ver.om1{background:var(--om1-lt);color:var(--om1);border:1px solid var(--om1-bd);}
+.ver.fcom{background:var(--fcom-lt);color:var(--fcom);border:1px solid var(--fcom-bd);}
+.ver.apm{background:var(--apm-lt);color:var(--apm);border:1px solid var(--apm-bd);}
+.search-row{display:flex;gap:8px;align-items:center;}
+.sw{position:relative;flex:1;}
+.sw svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--g5);pointer-events:none;}
+#q{width:100%;padding:10px 12px 10px 34px;border:1.5px solid var(--g2);border-radius:4px;font-family:var(--font);font-size:15px;color:var(--black);outline:none;background:var(--white);transition:border-color .15s;}
+#q:focus{border-color:var(--red);}
+#q::placeholder{color:var(--g5);}
+.doc-filters{display:flex;gap:4px;}
+.df{font-size:11px;font-weight:700;padding:6px 12px;border-radius:3px;border:1.5px solid var(--g2);background:var(--white);cursor:pointer;transition:all .15s;font-family:var(--font-c);letter-spacing:.3px;}
+.df:hover{border-color:var(--g5);}
+.df.on-om1{background:var(--om1);color:var(--white);border-color:var(--om1);}
+.df.on-fcom{background:var(--fcom);color:var(--white);border-color:var(--fcom);}
+.df.on-apm{background:var(--apm);color:var(--white);border-color:var(--apm);}
+#meta{font-size:11px;color:var(--g5);margin-top:5px;min-height:16px;}
+main{padding:16px 20px;max-width:1000px;}
+.hint{text-align:center;padding:70px 20px;color:var(--g5);font-size:15px;font-weight:300;border:2px dashed var(--g2);border-radius:8px;background:var(--white);margin-top:4px;}
+.hint strong{display:block;font-size:26px;font-weight:700;color:var(--g2);margin-bottom:10px;font-family:var(--font-c);}
+.hint em{display:block;font-size:12px;font-style:normal;color:var(--g2);margin-top:12px;}
+.no-results{text-align:center;padding:40px;color:var(--g5);font-size:14px;}
+.rgroup{margin-bottom:16px;}
+.rgroup-hdr{display:flex;align-items:center;gap:8px;padding:8px 14px;border-radius:5px 5px 0 0;font-family:var(--font-c);font-size:13px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;}
+.rgroup-hdr.om1{background:var(--om1);color:var(--white);}
+.rgroup-hdr.fcom{background:var(--fcom);color:var(--white);}
+.rgroup-hdr.apm{background:var(--apm);color:var(--white);}
+.rgroup-hdr .cnt{margin-left:auto;font-size:11px;opacity:.75;}
+.rrow{display:grid;grid-template-columns:72px 1fr 62px;background:var(--white);border:1px solid var(--g2);border-top:none;}
+.rrow:last-child{border-radius:0 0 5px 5px;}
+.rrow:not(:last-child){border-bottom:1px solid #F0F0F0;}
+.rrow:hover{background:#FAFAFA;}
+.rrow-sec{padding:10px 12px;font-family:var(--font-c);font-size:13px;font-weight:700;border-right:1px solid var(--g2);display:flex;align-items:flex-start;line-height:1.3;}
+.rrow-sec.om1{color:var(--om1);}
+.rrow-sec.fcom{color:var(--fcom);}
+.rrow-sec.apm{color:var(--apm);}
+.rrow-body{padding:10px 14px;display:flex;flex-direction:column;justify-content:center;}
+.rrow-title{font-size:13px;font-weight:600;color:var(--black);line-height:1.35;}
+.rrow-title mark{background:#FFF3CD;color:var(--black);border-radius:2px;padding:0 2px;}
+.rrow-desc{font-size:12px;color:var(--g7);margin-top:2px;line-height:1.4;font-weight:300;}
+.rrow-desc mark{background:#FFF3CD;color:var(--black);border-radius:2px;padding:0 1px;}
+.rrow-page{padding:10px 12px;display:flex;align-items:flex-start;justify-content:flex-end;font-family:var(--font-c);font-size:12px;color:var(--g5);white-space:nowrap;border-left:1px solid var(--g2);}
+::-webkit-scrollbar{width:5px;} ::-webkit-scrollbar-track{background:transparent;} ::-webkit-scrollbar-thumb{background:var(--g2);border-radius:3px;}
+</style>
+</head>
+<body>
+<header>
+<div class="hdr-inner">
+  <div class="hdr-top">
+    <div class="ql-mark">
+      <svg viewBox="0 0 34 34" fill="none"><rect width="34" height="34" rx="3" fill="#C8102E"/><path d="M17 5L22 11H19V22H15V11H12L17 5Z" fill="white"/><path d="M10 25H24V28H10V25Z" fill="white"/></svg>
+      <div class="ql-name">Q<span>ANTAS</span>LINK</div>
+    </div>
+    <div class="hdr-titles">
+      <h1>Q400 Manual Reference Index</h1>
+      <p>Type any topic — every matching section across OM1 · FCOM · APM 400 appears instantly</p>
+    </div>
+    <div class="ver-tags">
+      <span class="ver om1">OM1 v4.51 · Feb 26</span>
+      <span class="ver fcom">FCOM v5.1 · Mar 26</span>
+      <span class="ver apm">APM v7.0 · Mar 26</span>
+    </div>
+  </div>
+  <div class="search-row">
+    <div class="sw">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input id="q" type="text" placeholder="e.g.  icing   circling   LSALT   crosswind   fuel   takeoff minima   TCAS   holding..." autocomplete="off" spellcheck="false"/>
+    </div>
+    <div class="doc-filters">
+      <button class="df" id="f-om1" onclick="toggleDoc('om1')">OM1</button>
+      <button class="df" id="f-fcom" onclick="toggleDoc('fcom')">FCOM</button>
+      <button class="df" id="f-apm" onclick="toggleDoc('apm')">APM</button>
+    </div>
+  </div>
+  <div id="meta"></div>
+</div>
+</header>
+<main id="main">
+  <div class="hint" id="hint">
+    <strong>Search the manuals</strong>
+    Type any topic above and every matching section from all three manuals will appear — section number, one-line description, and page number.
+    <em>icing · circling · LSALT · crosswind · fuel · takeoff minima · TCAS · holding · alternate · QRM · windshear · RNP · contaminated · cold temperature · go around</em>
+  </div>
+  <div id="results"></div>
+</main>
+<script>
+var DATA=[
+{doc:"om1",s:"0.1.4",t:"Definitions, Acronyms and Abbreviations",d:"Full glossary of OM1 terms, acronyms and abbreviations",p:"0-22",k:"definitions acronyms abbreviations glossary terms"},
+{doc:"om1",s:"1.2",t:"Electronic Manual Access",d:"Comply365 and digital manual access on iPad",p:"1-2",k:"comply365 electronic manual ipad digital access"},
+{doc:"om1",s:"1.5.7",t:"Relevance of Jeppesen Airways Manuals",d:"When Jeppesen manuals apply and how NOTAMs interact",p:"1-11",k:"jeppesen airway manual relevance NOTAM charts"},
+{doc:"om1",s:"1.6.1",t:"Flight Documents",d:"Documents required to be carried on every flight",p:"1-15",k:"flight documents carried required crew paperwork"},
+{doc:"om1",s:"3.1",t:"Accident and Incident Investigations",d:"Just Culture policy and investigation obligations",p:"3-2",k:"accident incident investigation just culture policy"},
+{doc:"om1",s:"3.5",t:"Flight Data Analysis Program (FDAP)",d:"FlightPulse, purpose, scope and crew obligations",p:"3-13",k:"FDAP FOQA flight data analysis FlightPulse monitoring"},
+{doc:"om1",s:"3.11",t:"Reporting Requirements",d:"IRM and RRM definitions, procedure and immediate notification",p:"3-27",k:"reporting IRM immediately reportable matter RRM routine notification procedure"},
+{doc:"om1",s:"3.11.9",t:"Special Reporting — Wildlife / Bird Strikes",d:"Reporting procedure for bird and wildlife strikes",p:"3-32",k:"bird strike wildlife reporting special"},
+{doc:"om1",s:"3.11.10",t:"Special Reporting — Lightning Strikes",d:"Reporting procedure for lightning strike events",p:"3-33",k:"lightning strike reporting special"},
+{doc:"om1",s:"3.11.12",t:"Special Reporting — Hazardous Weather",d:"Reporting procedure for hazardous weather encounters including turbulence",p:"3-34",k:"hazardous weather reporting turbulence SIGMET severe"},
+{doc:"om1",s:"3.11.13",t:"Special Reporting — Breakdown in Separation",d:"Reporting procedure for separation breakdowns and AIRPROX",p:"3-34",k:"separation breakdown AIRPROX reporting ATC"},
+{doc:"om1",s:"3.11.14",t:"Special Reporting — Laser Light Incident",d:"Reporting procedure for laser light events",p:"3-35",k:"laser light incident reporting"},
+{doc:"om1",s:"3.13",t:"Fatigue Risk Management",d:"FRMS policy, crew obligations and fatigue reporting",p:"3-41",k:"fatigue risk management FRMS FRM policy obligations tired"},
+{doc:"om1",s:"3.14",t:"Medical Requirements",d:"Medical certificates, impaired efficiency due to illness",p:"3-41",k:"medical certificate illness DAME impaired efficiency fitness"},
+{doc:"om1",s:"3.15.5",t:"Fitness to Fly",d:"Self-assessment obligations before each flight",p:"3-46",k:"fitness to fly self assessment IM SAFE obligations"},
+{doc:"om1",s:"3.16",t:"Smoke, Fumes and Smell Protocol",d:"Cabin and flight deck procedure for smoke/fumes events",p:"3-47",k:"smoke fumes smell protocol cabin flight deck procedure"},
+{doc:"om1",s:"3.24",t:"Drug and Alcohol Management Plan (DAMP)",d:"Policy, testing obligations and breathalyser requirements",p:"3-52",k:"DAMP drug alcohol management plan testing BAC breathalyser"},
+{doc:"om1",s:"3.25",t:"Medications, Drugs and Flying",d:"Approved medications policy and DAME requirements",p:"3-54",k:"medications drugs flying approved DAME pharmacist"},
+{doc:"om1",s:"3.27",t:"Alcohol",d:"8-hour bottle-to-throttle rule and BAC limits for flight crew",p:"3-58",k:"alcohol limits restrictions flight crew 8 hours bottle throttle BAC"},
+{doc:"om1",s:"3.28",t:"Incapacitation",d:"Pilot incapacitation policy, recognition and crew procedures",p:"3-59",k:"incapacitation pilot in-flight procedure take control"},
+{doc:"om1",s:"4.3",t:"Flight Crew Communication Protocol",d:"Sterile cockpit policy and crew communication standards",p:"4-5",k:"communication protocol sterile cockpit crew coordination standards"},
+{doc:"om1",s:"4.4.1",t:"Operational Control",d:"PIC authority and shared company responsibility within Australian FIRs",p:"4-7",k:"operational control PIC authority company FIR CASR 91.215 ROC"},
+{doc:"om1",s:"4.4.2",t:"Flight Under the IFR — LSALT and VIVAT Rule",d:"Must fly at or above LSALT. Below LSALT permitted for: Visual approach/dep, Instrument approach/dep, VMC by day, ATC clearance, Takeoff or landing (VIVAT). Positive fix every 2hrs / 30min at or below 2000ft AGL. (FLT 3.10.1 / CASR 91.305)",p:"4-7",k:"IFR LSALT lowest safe altitude below LSALT VIVAT visual instrument VMC ATC takeoff landing positive fix 2 hours 30 minutes cruising level magnetic track FLT 3.10.1 CASR 91.305 MSA cancel IFR"},
+{doc:"om1",s:"4.4.2.1",t:"Visual Departures and Approaches below MVA/MSA/LSALT",d:"May accept from ATC when VMC possible. NOT cancellation of IFR. Crew must: maintain ATC track/heading; remain ≥500ft above CTA lower limit; visually maintain obstacle clearance",p:"4-8",k:"visual departure approach MVA MSA LSALT below VMC IFR CTA 500ft obstacle clearance ATC authorised heading track non-radar radar"},
+{doc:"om1",s:"4.4.3",t:"Night Flying Operations",d:"Policy and requirements for night flying",p:"4-10",k:"night flying operations requirements policy dark"},
+{doc:"om1",s:"4.6.5",t:"Captain's Duties",d:"Pre-flight, in-flight and post-flight obligations and responsibilities",p:"4-17",k:"captain duties responsibilities pre-flight in-flight post-flight obligations"},
+{doc:"om1",s:"4.6.6",t:"First Officer's Duties",d:"Roles and responsibilities of the FO",p:"4-24",k:"first officer FO duties responsibilities role"},
+{doc:"om1",s:"4.7.6",t:"Flight Crew Qualification",d:"Minimum requirements by rank — JFO, FO, Captain",p:"4-38",k:"flight crew qualification minimum requirements rank JFO FO captain experience hours"},
+{doc:"om1",s:"4.8",t:"Flight Crew Authorisation and Approved Minima",d:"Overall minima framework for all crew ranks (FLT 3.11.38)",p:"4-39",k:"flight crew authorisation approved minima framework FLT 3.11.38 JFO FO captain limits"},
+{doc:"om1",s:"4.8.1",t:"Takeoff Minima",d:"550m vis/zero ceiling (tower/day/lights ≤60m) vs 800m (night non-controlled or light spacing >60m). Confirm light spacing ≤60m before using <800m. Jepp charts may not reflect spacing.",p:"4-40",k:"takeoff minima 550m 800m visibility ceiling light spacing centreline tower non-controlled night day standard runway edge lights 60m Part 139 secondary power switchover Jeppesen"},
+{doc:"om1",s:"4.8.2",t:"Landing Minima",d:"JFO: MDA/H+200ft and vis>4000m. FO/Captain: airport/runway limitations",p:"4-42",k:"landing minima meteorological JFO FO captain MDA MDH DA DH visibility RVR 200ft 4000m airport runway limitation"},
+{doc:"om1",s:"4.8.3",t:"Crosswind and Tailwind Limits",d:"JFO: 15kt inc gusts; FO: 30kt inc gusts; Captain: Aircraft Limitations; Tailwind: 5kt all crew",p:"4-43",k:"crosswind tailwind limits JFO 15 knots FO 30 knots captain aircraft limitations gusts takeoff landing"},
+{doc:"om1",s:"4.8.4",t:"Alternate Minima — Crew Authorisation",d:"Crew authorisation limits when nominating and using alternates",p:"4-43",k:"alternate minima crew authorisation limits"},
+{doc:"om1",s:"4.11",t:"Low Visibility Operations (LVO)",d:"CAT II/III approvals and requirements",p:"4-44",k:"low visibility operations LVO CAT II III approval autoland"},
+{doc:"om1",s:"4.13",t:"Alternate Destinations Policy",d:"Company policy for nominating alternate destinations",p:"4-46",k:"alternate destinations policy nominating company ports"},
+{doc:"om1",s:"4.18.2",t:"Takeoffs and Landings Recency",d:"Currency requirements — number of T/Os and landings required within 90 days",p:"4-49",k:"takeoff landing recency currency 90 days recent experience T&G"},
+{doc:"om1",s:"4.18.4",t:"Instrument Approach Recency",d:"Currency requirements for instrument approach procedures",p:"4-50",k:"instrument approach recency IAP currency requirements"},
+{doc:"om1",s:"4.20",t:"Flight and Duty Time Limitations (FDTL)",d:"Maximum flight and duty hours, rest requirements",p:"4-50",k:"flight duty time limitations FDTL FTL hours rest maximum"},
+{doc:"om1",s:"5.6.2",t:"Flight Deck Door Security",d:"Locking, unlocking and access procedures for flight deck door",p:"5-7",k:"flight deck door security locking unlocking access procedure cascade fortified"},
+{doc:"om1",s:"5.9.6",t:"Bomb Threats",d:"Crew procedures and response to bomb threats",p:"5-37",k:"bomb threat procedure response crew actions"},
+{doc:"om1",s:"5.9.7",t:"Hijacking",d:"Crew procedures and response to hijacking",p:"5-37",k:"hijacking procedure response crew actions unlawful interference"},
+{doc:"om1",s:"6.1.1",t:"SOP Philosophy",d:"Principles behind SOPs, how they are applied, divergence policy",p:"6-2",k:"SOP standard operating procedure philosophy principles divergence policy"},
+{doc:"om1",s:"6.1.2",t:"Checklists",d:"Trigger, conduct, completion and checklist policy",p:"6-3",k:"checklist trigger conduct completion policy flow"},
+{doc:"om1",s:"6.1.6",t:"Automation Systems Policy",d:"Automation philosophy — when and how to use autoflight",p:"6-11",k:"automation policy philosophy autoflight autopilot use management"},
+{doc:"om1",s:"6.2.3",t:"Application of NOTAMs to Jeppesen Manuals",d:"Crew obligations for checking and applying NOTAMs",p:"6-15",k:"NOTAM application Jeppesen manuals crew obligations check"},
+{doc:"om1",s:"6.2.4",t:"Flight Planning",d:"Requirements and process for flight planning",p:"6-15",k:"flight planning requirements process fuel alternate"},
+{doc:"om1",s:"6.2.5",t:"Weather Watch",d:"Monitoring weather before and during flight",p:"6-16",k:"weather watch monitoring en route inflight wx"},
+{doc:"om1",s:"6.3.2",t:"Alternate Airport Policy",d:"Company policy for nominating and using alternate airports",p:"6-23",k:"alternate airport policy nominating company ports preferred"},
+{doc:"om1",s:"6.3.5",t:"Airport Rescue and Fire Fighting (ARFFS)",d:"ARFFS requirements for operations",p:"6-25",k:"ARFFS airport rescue fire fighting requirements RFFS"},
+{doc:"om1",s:"6.4",t:"Fuel Policy",d:"General fuel policy, planning, procedures and refuelling duties",p:"6-32",k:"fuel policy planning procedures refuelling duties general"},
+{doc:"om1",s:"6.4.2",t:"Fuel Procedures",d:"Pre-flight fuel checks and fuel management procedures",p:"6-33",k:"fuel procedures pre-flight checks management fuel order"},
+{doc:"om1",s:"6.6.2",t:"Departure and Approach Briefings",d:"Content, requirements and format for departure and approach briefs",p:"6-52",k:"departure approach briefing content requirements format ATIS weather minima"},
+{doc:"om1",s:"6.7.1",t:"Sterile Flight Deck Policy",d:"When it applies, what is prohibited below 10,000ft",p:"6-56",k:"sterile flight deck policy applies prohibited phases below 10000ft"},
+{doc:"om1",s:"6.8.8",t:"Dangerous Goods",d:"Policy, crew responsibilities and NOTOC requirements",p:"6-91",k:"dangerous goods DG policy crew responsibilities NOTOC categories"},
+{doc:"om1",s:"6.9.1",t:"TCAS Policy",d:"Unserviceability policy and controlled airspace requirement for TCAS",p:"6-99",k:"TCAS traffic collision avoidance unserviceable policy controlled airspace maintenance port"},
+{doc:"om1",s:"6.9.2",t:"EGPWS Policy",d:"Enhanced Ground Proximity Warning System — company policy",p:"6-100",k:"EGPWS enhanced ground proximity warning system policy terrain"},
+{doc:"om1",s:"6.10.5",t:"Communications at Non-Controlled Aerodromes",d:"CTAF/MBZ requirements — inbound call ~30nm, departure calls prior to each action",p:"6-107",k:"CTAF MBZ non-controlled aerodrome communications calls requirements inbound 30nm"},
+{doc:"om1",s:"6.13.6",t:"Wake Turbulence",d:"Wake turbulence separation requirements and procedures",p:"6-122",k:"wake turbulence separation requirements procedures heavy aircraft"},
+{doc:"om1",s:"6.13.9",t:"Noise Abatement Procedures",d:"NADP1 and NADP2 departure profiles",p:"6-124",k:"noise abatement procedures NADP1 NADP2 departure profiles"},
+{doc:"om1",s:"6.14.8",t:"Rates of Descent",d:"Maximum rates of descent and recommendations",p:"6-128",k:"rates of descent limitations recommendations maximum"},
+{doc:"om1",s:"6.14.9",t:"In-Flight Fuel Monitoring",d:"Requirements, thresholds, minimum fuel and MAYDAY fuel declaration",p:"6-128",k:"in-flight fuel monitoring requirements thresholds minimum fuel MAYDAY declaration"},
+{doc:"om1",s:"6.15.1",t:"Approach Definitions",d:"DA, DH, MDA, MDH, MAPt, visual references — all approach terms defined",p:"6-129",k:"approach definitions DA DH MDA MDH MAPt visual reference threshold runway"},
+{doc:"om1",s:"6.15.2",t:"Approach Type Selection",d:"Criteria for selecting the approach type — ILS, 2D, circling, visual, RNP",p:"6-130",k:"approach type selection criteria ILS 2D circling visual RNP"},
+{doc:"om1",s:"6.15.4",t:"Stable Approach Policy",d:"Gate criteria at 1000ft IMC / 500ft VMC. Go-around required if not stable at gate.",p:"6-133",k:"stable approach policy SAP gate criteria 1000ft 500ft IMC VMC parameters speed configuration sink rate go around"},
+{doc:"om1",s:"6.15.7",t:"Standard Callout Phraseology",d:"All approach callouts and required responses — 1000ft, 500ft, 100ft, MINIMUM, VISUAL",p:"6-137",k:"standard callout phraseology approach 1000ft 500ft 100ft MINIMUM VISUAL CONTINUE GO AROUND"},
+{doc:"om1",s:"6.15.8",t:"Visual Call",d:"At DA/CDA/MAPt PF responds Continue or Go Around. Final decision rests with PIC.",p:"6-137",k:"visual call DA CDA MAPt continue go around PIC decision final authority"},
+{doc:"om1",s:"6.15.9",t:"Circling Approach",d:"Visual manoeuvre post-IAP. Min 1000ft HAA or circling MDA. Maintain visual reference. Intercept 3° before descending. (FLT 3.11.69)",p:"6-139",k:"circling approach visual manoeuvre 1000ft HAA MDA circling area 25 degrees AoB circuit pattern FLT 3.11.69 visual reference runway environment"},
+{doc:"om1",s:"6.15.10",t:"Visual Segment",d:"If MDA reached before circling area — missed approach required unless visual segment is clear of cloud AND ground/water in sight per circling alt/vis",p:"6-139",k:"visual segment missed approach cloud ground water circling MDA visibility altitude"},
+{doc:"om1",s:"6.15.11",t:"Visual Approach — IFR Requirements",d:"Day: within 30NM, clear of cloud, in sight ground/water, vis 5000m or AD in sight. Night: vis 5000m + PAPI/GS distances. (AIP ENR 1.5 Para 1.14)",p:"6-140",k:"visual approach IFR requirements 30NM VMC day night 5000m PAPI glideslope AIP ENR 1.5 Jepp TERMINAL 4.19 circling area 3NM 5NM"},
+{doc:"om1",s:"6.15.12",t:"Performance Category",d:"Q400 performance category — determines circling area size",p:"6-141",k:"performance category circling area Q400 Cat C speed"},
+{doc:"om1",s:"6.15.14",t:"Commencement and Continuation of Approach",d:"Approach ban rules when weather is consistently below minima",p:"6-142",k:"commencement continuation approach ban weather below minima commence continue"},
+{doc:"om1",s:"6.15.15",t:"Approach Slope Guidance",d:"Use of PAPI, VASIS and ILS glideslope for approach guidance",p:"6-143",k:"approach slope guidance PAPI VASIS ILS glideslope visual"},
+{doc:"om1",s:"6.15.20",t:"Go Around / Missed Approach",d:"Go around procedure, callouts and execution",p:"6-145",k:"go around missed approach procedure callouts execution thrust flap"},
+{doc:"om1",s:"6.15.21",t:"Multiple Missed Approach Procedures",d:"When more than one MAP applies — which to use",p:"6-146",k:"multiple missed approach procedures MAP when applies"},
+{doc:"om1",s:"6.15.22",t:"Braking and Reverse Thrust",d:"Landing braking policy and reverse thrust technique",p:"6-146",k:"braking reverse thrust policy landing technique autobrake"},
+{doc:"om1",s:"6.15.24",t:"Special Approach — LAHSO",d:"Land and Hold Short Operations — requirements and limitations",p:"6-147",k:"LAHSO land hold short operations special approach intersection"},
+{doc:"om1",s:"6.15.25",t:"Special Approach — RNP AR APCH",d:"Authorisation Required approaches — eligibility and procedure",p:"6-148",k:"RNP AR approach authorisation required special curved RF leg"},
+{doc:"om1",s:"6.15.26",t:"Special Approach — Low Visibility (LVO)",d:"Low Visibility Operations approach requirements",p:"6-148",k:"low visibility special approach LVO CAT II III autoland"},
+{doc:"om1",s:"6.17",t:"Operations at Non-Controlled Aerodromes",d:"CTAF procedures, inbound call ~30nm, departure calls prior to each action",p:"6-154",k:"non-controlled aerodrome CTAF inbound 30nm departure calls uncontrolled MBZ"},
+{doc:"om1",s:"6.19",t:"Non-Normal Operations",d:"Definitions, unpressurised flight, gear down ferry flight",p:"6-167",k:"non-normal operations unpressurised flight gear down ferry abnormal contingency"},
+{doc:"om1",s:"6.20.1",t:"Cold Weather and Icing Operations",d:"Company policy for cold weather and icing conditions operations",p:"6-171",k:"cold weather icing operations policy winter frost snow ice"},
+{doc:"om1",s:"6.20.3",t:"Windshear",d:"Adverse weather windshear operations policy",p:"6-171",k:"windshear adverse weather operations policy microburst shear"},
+{doc:"om1",s:"6.20.4",t:"Volcanic Ash",d:"Volcanic ash avoidance and procedures",p:"6-171",k:"volcanic ash avoidance procedures SIGMET"},
+{doc:"om1",s:"6.20.6",t:"Thunderstorms",d:"Thunderstorm avoidance policy, radar use and procedures",p:"6-172",k:"thunderstorms avoidance policy procedures CBs cumulonimbus wx radar"},
+{doc:"om1",s:"7.2.1",t:"Circuit Breaker Policy",d:"When and how to reset circuit breakers",p:"7-4",k:"circuit breaker CB policy reset pull"},
+{doc:"om1",s:"7.3.4",t:"Overspeed",d:"VMO exceedance — reporting and maintenance assessment requirements",p:"7-7",k:"overspeed reporting assessment VMO exceedance"},
+{doc:"om1",s:"7.3.6",t:"Hard Landing",d:"Threshold values and reporting requirements for hard landings",p:"7-8",k:"hard landing threshold reporting requirement g-force"},
+{doc:"om1",s:"7.3.7",t:"Overweight Landing",d:"Reporting requirement when landing above MLW",p:"7-8",k:"overweight landing reporting MLW exceeded"},
+{doc:"om1",s:"7.3.8",t:"Turbulence Penetration or Abnormal Flight Loads",d:"Reporting requirements for turbulence encounters and abnormal loads",p:"7-8",k:"turbulence abnormal flight loads reporting severe moderate"},
+{doc:"om1",s:"10.4.6",t:"Company Port Supplement (CPS)",d:"How to read CPS briefing material for preferred and alternate ports",p:"10-28",k:"company port supplement CPS briefing material alternate preferred ports"},
+{doc:"om1",s:"10.5.5",t:"Runway Lighting — Destination and Alternate",d:"Lighting requirements for adequate aerodrome at destination and alternate",p:"10-34",k:"runway lighting destination alternate requirements adequate aerodrome night"},
+{doc:"om1",s:"10.5.6",t:"Runway Lighting Requirements",d:"Portable lighting, standby power and PAL standards",p:"10-35",k:"runway lighting requirements portable standby power PAL standards"},
+// FCOM
+{doc:"fcom",s:"0.4",t:"Definitions, Acronyms and Abbreviations",d:"Full FCOM glossary of terms, acronyms and abbreviations",p:"20",k:"definitions acronyms abbreviations glossary terms FCOM"},
+{doc:"fcom",s:"0.5.3",t:"Final Approach Speed (VAPP)",d:"VAPP calculation method and additive policy",p:"33",k:"VAPP final approach speed calculation additive flap config"},
+{doc:"fcom",s:"0.6.1",t:"Advisory Callouts Table",d:"Complete list of all advisory callouts during approach",p:"34",k:"advisory callouts table full list approach 1000ft MINIMUM VISUAL"},
+{doc:"fcom",s:"0.6.2",t:"Tolerances and Calls During Approach",d:"When callouts are triggered — speed, altitude and deviation tolerances",p:"36",k:"tolerances calls approach triggers parameters speed altitude deviation"},
+{doc:"fcom",s:"0.7.4",t:"Conduct of Non-Normal Checklist (QRH)",d:"How to action the QRH — conduct, memory items, immediate actions",p:"40",k:"QRH non-normal checklist conduct action memory items immediate"},
+{doc:"fcom",s:"0.8.4",t:"Hand Position",d:"Power lever hand position policy during all phases of flight",p:"43",k:"hand position policy power levers all phases flight"},
+{doc:"fcom",s:"0.8.5",t:"Hand Position During Approach",d:"Specific hand position requirements during approach",p:"45",k:"hand position approach specific requirements thrust levers"},
+{doc:"fcom",s:"0.8.7",t:"Briefings",d:"Format and content requirements for departure and approach briefings",p:"46",k:"briefings format content requirements departure approach brief"},
+{doc:"fcom",s:"0.10",t:"Automation Management",d:"FD/FMA modes, autoflight philosophy and automation use",p:"49",k:"automation management FD FMA modes autoflight philosophy AP"},
+{doc:"fcom",s:"0.10.2",t:"Flight Director Modes",d:"All FD modes and how they annunciate on the FMA",p:"52",k:"flight director modes FD annunciate IAS ALT VS PATH FMA"},
+{doc:"fcom",s:"0.11",t:"Altimetry",d:"Standard altimetry procedures, AAS, climb/descent/approach, temperature compensation",p:"53",k:"altimetry standard procedures AAS altitude alerting climb descent approach temperature compensation"},
+{doc:"fcom",s:"0.11.6",t:"Temperature Compensation",d:"When and how to apply cold temperature corrections to altitudes",p:"57",k:"temperature compensation cold corrections altitude LSALT MSA approach MDA below ISA"},
+{doc:"fcom",s:"0.12",t:"Lights",d:"Aircraft lighting policy and selections by phase of flight",p:"58",k:"lights lighting policy selections phase flight landing strobe beacon recognition"},
+{doc:"fcom",s:"1.4.4",t:"Crosswind and Tailwind Limits",d:"Aircraft limitation crosswind and tailwind component values for Q400",p:"66",k:"crosswind tailwind limits aircraft limitation Q400 demonstrated"},
+{doc:"fcom",s:"1.5",t:"Airspeeds and Limits",d:"VMO, VFE, VLO, VLE, VA, VB, stall speeds and tyre speed groundspeed limits",p:"67",k:"airspeeds limits VMO VFE VLO VLE VA VB stall tyre speed groundspeed never exceed"},
+{doc:"fcom",s:"1.6.2",t:"Engine Operating Limits",d:"Torque, ITT, NH, NL, NP limits and ranges",p:"72",k:"engine operating limits torque ITT NH NL NP ranges power plant"},
+{doc:"fcom",s:"1.12",t:"Landing Gear and Flap Limits",d:"Maximum altitude, flap extended speeds, brake limitations",p:"84",k:"landing gear flap limits maximum altitude speed brake"},
+{doc:"fcom",s:"1.14",t:"Ice Protection Limitations",d:"Engine and airframe icing limitations — SLD, temperature ranges",p:"87",k:"ice protection limitations engine airframe icing SLD temperature"},
+{doc:"fcom",s:"1.17",t:"Automatic Flight Control System (AFCS) Limitations",d:"Autopilot and flight director minimum engagement height and limits",p:"90",k:"AFCS autopilot flight director limitations minimum engagement height"},
+{doc:"fcom",s:"1.20",t:"Contaminated Runway Limitations",d:"Standing water, slush, snow and compacted snow operational limits",p:"93",k:"contaminated runway standing water slush snow compacted limitations operations"},
+{doc:"fcom",s:"2.8",t:"Takeoff Procedure",d:"Captain's and FO's technique, V1/VR/V2, after takeoff checks",p:"143",k:"takeoff procedure technique captain FO V1 VR V2 after checks rotation"},
+{doc:"fcom",s:"2.9.5",t:"24 Hour Ice Protection Checks",d:"Airborne ice protection system check — boots and anti-ice systems",p:"150",k:"24 hour ice protection checks airborne system deice anti-ice boots"},
+{doc:"fcom",s:"2.10.3",t:"Fuel Check (Cruise)",d:"En route fuel check procedure and requirements",p:"154",k:"fuel check cruise en route procedure requirements holding"},
+{doc:"fcom",s:"2.10.4",t:"Holding",d:"Min 190 KIAS. Icing: flaps 0, no holding <190 KIAS. Approach lights ON. ARM HOLD / DTO HOLD. HDG MISMATCH: return to S&L, allow 5min AHRU reactivation — if persists use QRH.",p:"155",k:"holding 190 KIAS minimum speed icing flaps 0 arm hold DTO hold HDG mismatch AHRU approach lights entry type speed altitude brief PF PM"},
+{doc:"fcom",s:"2.11",t:"Approach Preparation",d:"ATIS, configuration planning, approach brief requirements",p:"156",k:"approach preparation ATIS configuration planning brief weather"},
+{doc:"fcom",s:"2.12.1",t:"Descent Profile",d:"Standard 3° FPA at VMO-10. Reduced 210kt descent for non-Class C arrivals >5min early.",p:"160",k:"descent profile standard 3 degree FPA VMO-10 reduced 210 knots fuel efficiency arrival non-class C"},
+{doc:"fcom",s:"2.13.1",t:"Stable Approach Procedures",d:"Stable approach technique at gate heights — 1000ft IMC / 500ft VMC",p:"164",k:"stable approach procedure technique gate 1000ft 500ft speed configuration"},
+{doc:"fcom",s:"2.13.2",t:"ILS Approach",d:"Full ILS approach procedure and standard callouts",p:"165",k:"ILS approach procedure standard callouts glideslope localiser precision"},
+{doc:"fcom",s:"2.13.3",t:"Approach with Vertical Guidance (APV)",d:"Baro-VNAV and RNP AR procedure",p:"167",k:"APV approach vertical guidance Baro-VNAV RNP AR procedure"},
+{doc:"fcom",s:"2.13.4",t:"2D Approach",d:"Non-precision approach — with and without advisory vertical guidance",p:"172",k:"2D approach advisory vertical guidance NPA non-precision VOR NDB GNSS"},
+{doc:"fcom",s:"2.13.5",t:"Visual Circling",d:"Circling approach circuit procedure — 25° AoB, abeam timing, 60° turn onto final",p:"176",k:"visual circling approach procedure circuit technique 25 degrees AoB abeam timing 60 degree turn final"},
+{doc:"fcom",s:"2.13.6",t:"Visual Approach",d:"Visual circuit and straight-in approach technique",p:"177",k:"visual approach circuit straight-in procedure technique PAPI"},
+{doc:"fcom",s:"2.14",t:"Landing",d:"Transition to landing, pitch awareness, landing technique and brakes",p:"182",k:"landing transition pitch awareness technique brakes reverse thrust touchdown flare"},
+{doc:"fcom",s:"2.15",t:"Missed Approach",d:"Go Around, Discontinued Approach and Missed Approach Return to Land",p:"186",k:"missed approach go around discontinued approach return to land procedure"},
+{doc:"fcom",s:"2.15.1",t:"Go Around",d:"Full go around procedure and callouts",p:"187",k:"go around procedure callouts thrust flap climb TOGA"},
+{doc:"fcom",s:"2.15.2",t:"Discontinued Approach",d:"Procedure when approach is discontinued before reaching DA/MDA",p:"188",k:"discontinued approach procedure before DA MDA early"},
+{doc:"fcom",s:"3.3.4",t:"Engine Failure / Fire / Shutdown — In Flight",d:"Recall actions for engine failure, fire or shutdown in flight",p:"224",k:"engine failure fire shutdown in-flight recall actions memory QRH"},
+{doc:"fcom",s:"3.3.5",t:"Engine Failure After V1",d:"Recall actions for engine failure after V1 during takeoff",p:"227",k:"engine failure after V1 recall actions takeoff climb OEI"},
+{doc:"fcom",s:"3.4.1",t:"Rejected Takeoff (RTO)",d:"Immediate actions for rejected takeoff below V1",p:"239",k:"rejected takeoff RTO immediate actions V1 abort max braking"},
+{doc:"fcom",s:"3.5.1",t:"EGPWS Terrain Recovery",d:"Immediate recovery actions from GPWS terrain warning — PULL UP",p:"242",k:"EGPWS terrain recovery immediate actions GPWS PULL UP warning CFIT"},
+{doc:"fcom",s:"3.5.2",t:"Windshear Recovery",d:"Immediate escape actions from windshear encounter",p:"244",k:"windshear recovery immediate actions shear microburst escape TOGA"},
+{doc:"fcom",s:"3.5.3",t:"High Angle of Attack Recovery",d:"Stall recognition and recovery technique",p:"245",k:"high angle of attack recovery stall recognition stick shaker"},
+{doc:"fcom",s:"3.5.4",t:"Upset Recovery",d:"Unusual attitude recognition, prevention and recovery technique",p:"247",k:"upset recovery UPRT prevention technique unusual attitude"},
+{doc:"fcom",s:"3.5.5",t:"TCAS RA Response",d:"Follow RA immediately, do not deviate in response to ATC — takes priority",p:"249",k:"TCAS RA resolution advisory response follow immediately do not deviate ATC priority"},
+{doc:"fcom",s:"4.11",t:"Turbulence",d:"Definitions, aircraft preparation and flight technique in severe turbulence",p:"271",k:"turbulence definitions aircraft preparation flight technique severe moderate chop"},
+{doc:"fcom",s:"4.12",t:"Weather Radar",d:"Use, tilt management, radar interpretation, REACT technique and severe weather avoidance",p:"273",k:"weather radar use tilt management interpretation REACT severe weather avoidance CBs cumulonimbus"},
+{doc:"fcom",s:"4.14",t:"Ground De-icing and Anti-icing",d:"Policy, fluid types (Type I/II/IV), precautions, holdover time (HOT) and pre-takeoff inspection",p:"285",k:"ground de-icing anti-icing policy fluid types Type I II IV precautions holdover time HOT pre-takeoff check clean aircraft concept"},
+{doc:"fcom",s:"4.15",t:"Operations in Icing Conditions",d:"Full icing ops: pre-dep, after start, taxi, takeoff, climb/cruise/descent, severe icing, holding/approach/landing, after landing",p:"291",k:"icing conditions operations pre-departure after start taxi takeoff climb cruise descent severe icing holding approach landing after landing ice protection"},
+{doc:"fcom",s:"4.15.5",t:"Takeoff in Icing Conditions",d:"Specific icing requirements and technique for takeoff",p:"293",k:"takeoff icing conditions requirements technique boots ice protection NTOP bleeds"},
+{doc:"fcom",s:"4.15.7",t:"Climb, Cruise and Descent in Icing",d:"Ice protection procedures throughout cruise phase in icing conditions",p:"295",k:"climb cruise descent icing procedures boots cycle anti-ice deice"},
+{doc:"fcom",s:"4.15.8",t:"Severe Icing Encounter",d:"Recognition of severe icing and immediate escape actions",p:"297",k:"severe icing encounter recognition escape actions SLD supercooled large droplets"},
+{doc:"fcom",s:"4.15.9",t:"Holding, Approach and Landing in Icing",d:"Flaps 0 for holding, holding <190 KIAS prohibited, specific approach technique in icing",p:"298",k:"holding approach landing icing flaps 0 190 KIAS prohibited technique boots deice"},
+{doc:"fcom",s:"4.16",t:"Wet and Contaminated Runways",d:"Wet runway and contaminated runway procedures and performance considerations",p:"300",k:"wet contaminated runways procedures standing water slush snow performance"},
+{doc:"fcom",s:"4.17",t:"Cold Temperature Corrections",d:"When to apply and how to calculate cold temperature altitude corrections",p:"303",k:"cold temperature corrections apply calculate altitude MSA LSALT MDA approach threshold ISA below"},
+{doc:"fcom",s:"4.18",t:"Flight Deck Door",d:"Cascade and Fortified door systems — locking, access and remote access system procedures",p:"304",k:"flight deck door cascade fortified access procedure remote access system locking"},
+{doc:"fcom",s:"4.19.12",t:"FMS Holding",d:"Programming a hold in the FMS — standard hold and PPOS hold",p:"341",k:"FMS holding programming hold PPOS procedure ARM DTO"},
+{doc:"fcom",s:"4.19.25",t:"FMS RAIM Prediction",d:"Pre-flight GNSS integrity check using FMS RAIM prediction",p:"361",k:"FMS RAIM prediction pre-flight GNSS integrity check GPS fault detection"},
+{doc:"fcom",s:"4.20",t:"Windshear",d:"General, crew actions, avoidance, precautions for T/O and approach, and recovery",p:"367",k:"windshear general crew actions avoidance precautions takeoff approach recovery escape microburst"},
+{doc:"fcom",s:"4.21",t:"EGPWS",d:"Preflight, in-flight, failure and non-normal ops, deactivation — modes and warnings",p:"371",k:"EGPWS preflight in-flight failure non-normal deactivation modes PULL UP terrain"},
+{doc:"fcom",s:"4.22",t:"TCAS — Operating Procedures",d:"TA/RA types, corrective/preventative RAs, clear of conflict, TCAS v7.1",p:"373",k:"TCAS operating procedures TA RA corrective preventative clear of conflict version 7.1"},
+{doc:"fcom",s:"4.23",t:"ADS-B",d:"General, FMS FLT NBR field, ATC phraseology, abnormal annunciations and unserviceability",p:"378",k:"ADS-B general FLT NBR ATC phraseology abnormal unserviceable"},
+// APM
+{doc:"apm",s:"3.1",t:"Fuel Definitions",d:"Final reserve, minimum, holding, contingency, no destination alternate (15min), abnormal ops allowance",p:"51",k:"fuel definitions final reserve minimum holding contingency alternate no destination alternate 15 minutes abnormal ops allowance bucket"},
+{doc:"apm",s:"3.2",t:"Fuel Planning Prior to Departure",d:"Pre-flight fuel planning requirements and process",p:"54",k:"fuel planning prior departure pre-flight requirements process"},
+{doc:"apm",s:"3.3",t:"In-Flight Fuel Requirements",d:"Fuel required to destination and during diversion",p:"55",k:"in-flight fuel requirements destination diversion contingency"},
+{doc:"apm",s:"4.1",t:"Alternate Planning Definitions",d:"ETU, Relevant Weather, Relevant Minima, Landing/Destination/Alternate Minima — all defined",p:"59",k:"alternate planning definitions ETU estimated time of use relevant weather relevant minima landing destination alternate minima defined"},
+{doc:"apm",s:"4.2.1",t:"Departure Aerodrome Suitability",d:"For TOA requirement: cloud/vis only considered. INTER/TEMPO and PROB30/40 are included.",p:"61",k:"departure aerodrome suitability takeoff alternate TOA cloud vis INTER TEMPO PROB 30 40"},
+{doc:"apm",s:"4.2.2",t:"Takeoff Alternate Suitability",d:"Relevant Weather must be considered incl. thunderstorms. Company port preferred. INTER/TEMPO: carry holding fuel.",p:"61",k:"takeoff alternate suitability relevant weather thunderstorm company port preferred INTER TEMPO holding fuel"},
+{doc:"apm",s:"4.3.1",t:"Destination Suitability — When Alternate Required",d:"Alternate required if: Relevant Weather, Nav reqs not met, Lighting reqs not met, or operational restriction. Weather below Landing Minima OR no TAF → 1 alt on Dest Minima OR 2 alts on Alternate Minima.",p:"62",k:"destination suitability alternate required relevant weather navigation lighting operational restriction TAF below landing minima 1 alternate destination minima 2 alternates alternate minima ETU"},
+{doc:"apm",s:"4.3.2",t:"Holding Fuel Exception",d:"No alternate required if sufficient holding fuel to outlast the weather/restriction within the ETU",p:"62",k:"holding fuel exception no alternate required outlast weather restriction ETU"},
+{doc:"apm",s:"4.3.3",t:"Inflight TAF3 Exception",d:"Within 60 min flight time: use Alternate Minima. Destination must have TAF3; ETA−30/+60 within first 3hrs of TAF3; sufficient holding fuel carried.",p:"62",k:"inflight TAF3 exception 60 minutes alternate minima TAF3 ETA minus 30 plus 60 3 hours holding fuel airborne"},
+{doc:"apm",s:"4.3.4",t:"Enroute Alternates",d:"Circumstances requiring an enroute alternate (refer section 4.10 distance limitations)",p:"63",k:"enroute alternate circumstances required distance limitations"},
+{doc:"apm",s:"4.3.5",t:"Alternate Suitability",d:"Must not itself require an alternate. Company port with refuelling preferred. Advise ROC if not a Main port.",p:"63",k:"alternate suitability not require alternate company port refuelling ROC advise main port preferred"},
+{doc:"apm",s:"4.3.6",t:"Aerodromes Outside Australian Territories",d:"<2 runways: Destination Alternate mandatory. Destination Minima cannot be used as Relevant Minima for that aerodrome as alternate.",p:"63",k:"aerodromes outside Australian territories 2 runways destination alternate mandatory destination minima relevant minima"},
+{doc:"apm",s:"4.4.1",t:"Cloud — Relevant Weather",d:"More than SCT below Relevant Minima. FEW+FEW=SCT; FEW+SCT=BKN; SCT+SCT=BKN or OVC",p:"64",k:"cloud SCT BKN OVC FEW amounts cumulative more than scattered relevant weather"},
+{doc:"apm",s:"4.4.2",t:"Visibility — Relevant Weather",d:"Any phenomenon restricting visibility below the Relevant Minima constitutes Relevant Weather",p:"64",k:"visibility restriction relevant weather mist fog rain RVR"},
+{doc:"apm",s:"4.4.3",t:"Wind — Relevant Weather",d:"Crosswind or tailwind component (including gusts) exceeding aircraft maximum is Relevant Weather",p:"64",k:"wind crosswind tailwind gusts exceeding maximum aircraft limits relevant weather"},
+{doc:"apm",s:"4.4.4",t:"Thunderstorm — Relevant Weather",d:"A thunderstorm or its associated severe turbulence constitutes Relevant Weather",p:"64",k:"thunderstorm severe turbulence relevant weather CB cumulonimbus"},
+{doc:"apm",s:"4.4.5",t:"Change Indicators — Alternate Planning",d:"BECMG/FM: hold fuel to shift ETU clear of restrictive period. INTER: 30min. TEMPO: 60min. Multiple: most restrictive only. PROB30/40: consider within first 3hrs of TAF3.",p:"64",k:"change indicators BECMG FM INTER TEMPO PROB 30 40 holding fuel shift ETU most restrictive TAF3 3 hours"},
+{doc:"apm",s:"4.5.1",t:"Relevant Minima Summary",d:"Departure/TOA: Landing Minima. Destination: Destination Minima. Dest with TAF3 (airborne) / Dest Alt / Enroute Alt: Alternate Minima (or Destination Minima if lower).",p:"66",k:"relevant minima summary table departure takeoff alternate destination TAF3 destination alternate enroute alternate landing minima destination minima alternate minima"},
+{doc:"apm",s:"4.5.2",t:"Landing Minima",d:"Published IAP minima — cloud ceiling as height + vis/RVR. NOT corrected for PEC or CDA. Circling height not corrected for 1000ft company requirement.",p:"66",k:"landing minima published IAP instrument approach cloud ceiling height visibility RVR not corrected PEC CDA circling height"},
+{doc:"apm",s:"4.5.3",t:"Destination Minima",d:"Landing Minima +1000ft ceiling (or +500ft if circling only) +2km vis (min 5km). Used to determine if alternate required.",p:"67",k:"destination minima landing minima plus 1000ft ceiling 500ft circling 2km visibility minimum 5km determines alternate required reference minima QRM"},
+{doc:"apm",s:"4.5.4",t:"Alternate Minima",d:"Config 1 (2 independent IAPs straight-in): +400ft/+1500m on second-lowest approach. Config 2 (1 IAP): +400ft above circling height/+1500m. Config 3 (no IAP): +500ft above LSALT/8km.",p:"68",k:"alternate minima config 1 2 3 two independent IAPs 400ft 1500m second lowest DA MDA circling 500ft LSALT 8km GNSS independent navigation aid"},
+{doc:"apm",s:"4.5.5",t:"Quick Reference Minima (QRM) Charts",d:"Located in CO tab Jeppesen FD Pro EFB. Any NOTAM or MEL affecting IAP may invalidate the QRM. WX Brief EFB is an alternative.",p:"69",k:"QRM quick reference minima charts Jeppesen FD Pro EFB CO tab NOTAM MEL invalidate WX Brief"},
+{doc:"apm",s:"4.5.5.1",t:"Reference Minima",d:"Most conservative Destination Minima across all approaches for the most limiting runway. Dashed if no TAF — always requires alternate.",p:"69",k:"reference minima most limiting runway all approaches dashed no TAF always requires alternate"},
+{doc:"apm",s:"4.5.5.2",t:"QRM Chart Features",d:"How to read a QRM chart: effective date, reference destination minima, reference alternate minima, approach list, notes",p:"70",k:"QRM chart features read effective date reference destination alternate minima approach list notes"},
+{doc:"apm",s:"4.6.1",t:"Navigation Requirements — Destination Suitability",d:"Must have 2 serviceable independent nav systems each capable of IAP at destination. Dual FMS counts.",p:"71",k:"navigation requirements destination suitability 2 serviceable independent navigation systems IAP dual FMS GNSS"},
+{doc:"apm",s:"4.6.2",t:"Navigation Requirements — Alternate Suitability",d:"Relevant Weather not below 500ft above LSALT (last route segment) AND 8km visibility",p:"71",k:"navigation requirements alternate suitability 500ft LSALT last route segment 8km visibility Config 3"},
+{doc:"apm",s:"4.6.3",t:"GPS RAIM Prediction",d:"Must check NOTAM pre-flight. Fault Detection only predicted >5min during ETU: carry additional holding fuel OR nominate Destination Alternate.",p:"71",k:"GPS RAIM prediction NOTAM pre-flight fault detection only 5 minutes ETU holding fuel destination alternate GNSS integrity"},
+{doc:"apm",s:"4.7",t:"Runway Lighting Requirements",d:"Night ETU and lighting not met: nominate alternate OR carry holding fuel to first light +10min",p:"72",k:"runway lighting requirements night ETU not met nominate alternate holding fuel first light plus 10 minutes"},
+{doc:"apm",s:"4.7.1",t:"Portable Lighting",d:"Arrangements required when runway lighting is portable — responsible person on station 30min before ETA",p:"72",k:"portable lighting runway arrangements required responsible person 30 minutes"},
+{doc:"apm",s:"4.7.3",t:"Pilot-Activated Lighting (PAL)",d:"Requirements when PAL is the only runway lighting available",p:"72",k:"PAL pilot activated lighting requirements runway only"},
+{doc:"apm",s:"4.8",t:"Company Ports",d:"Main, Primary Alternate, Secondary Alternate and Other Alternate airports — full list",p:"73",k:"company ports main primary secondary other alternate airports listed"},
+{doc:"apm",s:"4.9",t:"Aerodrome Requirements",d:"Suitable Aerodrome, Adequate Aerodrome, Airport Standards and Certified Aerodromes — definitions",p:"77",k:"aerodrome requirements suitable adequate airport standards certified"},
+{doc:"apm",s:"4.10",t:"Enroute Distance Limitations",d:"Q400 single engine declared TAS, route distance limitations and enroute alternate requirements",p:"80",k:"aerodromes enroute availability single engine TAS route distance limitations Q400 ETOPS"},
+{doc:"apm",s:"5.1",t:"Flight Planning Requirements",d:"Operational Flight Plan, authorised weather forecasts and planning flow chart",p:"83",k:"flight planning requirements operational flight plan OFP authorised weather forecasts flow chart"},
+{doc:"apm",s:"5.2",t:"FirstFlight Application",d:"Use of FirstFlight for flight planning — process and functions",p:"86",k:"FirstFlight application flight planning use process functions"},
+{doc:"apm",s:"6.1",t:"AeroData Takeoff Performance",d:"MEL performance adjustments, ASDR, torque setting, takeoff speeds and data validity",p:"109",k:"AeroData takeoff performance MEL adjustments ASDR torque setting speeds data validity"},
+{doc:"apm",s:"6.2",t:"Takeoff Weight Limits",d:"AFM, brake energy, climb, field length, obstacle and structural weight limits",p:"113",k:"takeoff weight limits AFM brake energy climb field length obstacle structural RTOW"},
+{doc:"apm",s:"6.5",t:"Takeoff Obstacle Clearance",d:"Obstacle clearance requirements and assessment for takeoff",p:"118",k:"takeoff obstacle clearance requirements assessment"},
+{doc:"apm",s:"6.7",t:"Runway Surface Condition (Takeoff)",d:"Runway condition codes, wet and contaminated runway performance for takeoff",p:"121",k:"runway surface condition codes wet contaminated slush snow rainfall intensities RCAM takeoff"},
+{doc:"apm",s:"6.8",t:"Icing Conditions — Takeoff",d:"Ground de-icing performance and takeoff with ice protection systems on",p:"125",k:"icing conditions takeoff ground de-icing performance ice protection on NTOP bleeds anti-ice"},
+{doc:"apm",s:"6.12",t:"Engine Failure Procedures",d:"EFP types, AeroData EFP abbreviations, following EFP after V1",p:"131",k:"engine failure procedure EFP types AeroData following V1 single engine OEI"},
+{doc:"apm",s:"7.5",t:"Holding Fuel Flow",d:"Q400 holding fuel flow data by weight and speed for fuel planning",p:"151",k:"holding fuel flow Q400 data weight speed calculation planning"},
+{doc:"apm",s:"7.7",t:"Abnormal Performance Data",d:"Driftdown, OEI climb TAS/fuel flow and OEI cruise TAS/fuel flow",p:"153",k:"abnormal data driftdown OEI climb cruise performance single engine"},
+{doc:"apm",s:"8.2",t:"AeroData Landing Performance",d:"MEL performance adjustments, landing torque/speeds and data validity",p:"159",k:"AeroData landing performance MEL adjustments torque speeds data validity RLW"},
+{doc:"apm",s:"8.3",t:"Landing Weight Limits",d:"Brake energy, WAT/approach climb, field length and structural landing weight limits",p:"162",k:"landing weight limits brake energy WAT approach climb field length structural RLW"},
+{doc:"apm",s:"8.4",t:"Landing Distance",d:"Normal, non-normal and QRH calculation method for landing distance",p:"168",k:"landing distance normal non-normal QRH calculation method"},
+{doc:"apm",s:"8.6",t:"Runway Surface Condition (Landing)",d:"Runway condition codes, wet and contaminated runway performance for landing",p:"171",k:"runway surface condition landing codes wet contaminated slush snow"},
+{doc:"apm",s:"8.9",t:"Minimum Turnaround Time",d:"Brake energy cooling charts for back-to-back operations",p:"177",k:"minimum turnaround time brake energy cooling charts back-to-back operations"},
+{doc:"apm",s:"9",t:"Missed Approach Performance",d:"Terrain clearance, acceleration altitude and OEI contingency planning",p:"184",k:"missed approach performance terrain clearance acceleration altitude OEI contingency planning"},
+{doc:"apm",s:"10.3",t:"Contaminated Runway Operations",d:"WED, limitations and takeoff/landing performance on contaminated runways",p:"198",k:"contaminated runway operations WED water equivalent depth limitations takeoff landing performance"},
+{doc:"apm",s:"10.4",t:"Takeoff with Reduced Power",d:"Flex / RTOP limitations and use — assumed temperature method",p:"202",k:"takeoff reduced power flex RTOP limitations use assumed temperature"}
+];
+
+var activeDoc=null;
+var qEl=document.getElementById('q');
+var metaEl=document.getElementById('meta');
+var resultsEl=document.getElementById('results');
+var hintEl=document.getElementById('hint');
+
+function toggleDoc(doc){
+  activeDoc=activeDoc===doc?null:doc;
+  ['om1','fcom','apm'].forEach(function(d){
+    var btn=document.getElementById('f-'+d);
+    btn.className='df'+(activeDoc===d?' on-'+d:'');
+  });
+  doSearch();
+}
+
+qEl.addEventListener('input',doSearch);
+
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function hl(text,terms){
+  var e=esc(text);
+  terms.forEach(function(t){
+    if(t.length<2)return;
+    var r=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    e=e.replace(r,'<mark>$1</mark>');
+  });
+  return e;
+}
+
+function doSearch(){
+  var raw=qEl.value.trim();
+  if(!raw&&!activeDoc){
+    hintEl.classList.remove('hidden');
+    resultsEl.innerHTML='';
+    metaEl.textContent='';
+    return;
+  }
+  hintEl.classList.add('hidden');
+  var terms=raw.toLowerCase().split(/\s+/).filter(function(t){return t.length>0;});
+  var groups={om1:[],fcom:[],apm:[]};
+  var total=0;
+  DATA.forEach(function(row){
+    if(activeDoc&&row.doc!==activeDoc)return;
+    var hay=(row.t+' '+row.d+' '+row.k+' '+row.s).toLowerCase();
+    var match=terms.length===0||terms.every(function(t){return hay.includes(t);});
+    if(match){groups[row.doc].push(row);total++;}
+  });
+  if(total===0){
+    resultsEl.innerHTML='<div class="no-results">No results for <strong>'+esc(raw)+'</strong> — try different or broader keywords</div>';
+    metaEl.textContent='0 results';
+    return;
+  }
+  metaEl.textContent=total+' result'+(total!==1?'s':'')+(raw?' for "'+raw+'"':'');
+  var labels={om1:{l:'OM1 — Operations Manual 1',v:'v4.51 · 20 Feb 2026'},fcom:{l:'FCOM — Flight Crew Operating Manual',v:'v5.1 · 11 Mar 2026'},apm:{l:'APM 400 — Aircraft Performance Manual',v:'v7.0 · 11 Mar 2026'}};
+  var html='';
+  ['om1','fcom','apm'].forEach(function(doc){
+    var rows=groups[doc];
+    if(!rows.length)return;
+    var info=labels[doc];
+    html+='<div class="rgroup">';
+    html+='<div class="rgroup-hdr '+doc+'">'+info.l+' <span style="font-weight:300;font-size:11px;opacity:.75;">'+info.v+'</span><span class="cnt">'+rows.length+' result'+(rows.length!==1?'s':'')+'</span></div>';
+    rows.forEach(function(row){
+      html+='<div class="rrow">';
+      html+='<div class="rrow-sec '+doc+'">§'+row.s+'</div>';
+      html+='<div class="rrow-body"><div class="rrow-title">'+hl(row.t,terms)+'</div>';
+      if(row.d)html+='<div class="rrow-desc">'+hl(row.d,terms)+'</div>';
+      html+='</div>';
+      html+='<div class="rrow-page">p.'+row.p+'</div>';
+      html+='</div>';
+    });
+    html+='</div>';
+  });
+  resultsEl.innerHTML=html;
+}
+</script>
+</body>
+</html>
